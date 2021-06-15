@@ -5,17 +5,6 @@ const bottomRightCorner = '┛';
 const verticalLine = '┃';
 const line = '━';
 
-let tableWidth = 0;
-let longest;
-let arr = [];
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i].length > tableWidth) {
-    tableWidth = arr[i].length;
-    longest = arr[i];
-  }
-}
-
 function drawLine(number) {
   return line.repeat(number);
 }
@@ -25,6 +14,9 @@ function drawTopBorder(number) {
 }
 
 function drawMiddleBorder(number) {
+  if (number === 0) {
+    return verticalLine + line.repeat(number + 1) + verticalLine;
+  }
   return verticalLine + line.repeat(number) + verticalLine;
 }
 
@@ -38,10 +30,14 @@ function drawBarsAround(name) {
 
 //find longest string in array which will be max-width of box
 
-console.log(drawTopBorder(10));
-//console.log(drawLine(10));
-console.log(drawMiddleBorder(10));
-//console.log(drawLine(10));
-console.log(drawMiddleBorder(10));
-console.log(drawBottomBorder(10));
+console.log(drawLine(4));
+console.log(drawLine(8));
+console.log(drawTopBorder(4));
+console.log(drawTopBorder(0));
+console.log(`\n`);
+console.log(drawMiddleBorder(8));
+console.log(`\n`);
+console.log(drawMiddleBorder(0));
+console.log(`\n`);
+console.log(drawBottomBorder(2));
 console.log(drawBarsAround('  My name is Dan  '));
