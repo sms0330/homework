@@ -1,18 +1,12 @@
-// input array
-const args = process.argv;
-let a = args[2];
-let b = args[3];
-let c = args[4];
-let arr;
-if (a === undefined && b === undefined && c === undefined) {
+let arr = [];
+if (process.argv[2] === undefined) {
   arr = [''];
-} else if (c === undefined && b === undefined) {
-  arr = [a];
-} else if (c === undefined) {
-  arr = [a, b];
 } else {
-  arr = [a, b, c];
+  for (let i = 2; i < process.argv.length; i++) {
+    arr.push(process.argv[i]);
+  }
 }
+
 const topLeftCorner = '┏';
 const topRightCorner = '┓';
 const bottomLeftCorner = '┗';
