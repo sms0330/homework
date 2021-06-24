@@ -63,3 +63,6 @@ console.log(t3);
 
 const t4 = new Turtle(0, 4).forward(3).left().forward(3);
 console.log(t4);
+
+const flash = new Turtle(0, 0).forward(3).left().forward(3);
+console.log(flash.allPoints());
