@@ -4,7 +4,6 @@ class Turtle {
     this.y = y;
     this.direction = 'east';
     this.position = [[this.x, this.y]];
-    this.stuckedPosition = [];
   }
 
   forward(steps) {
@@ -52,3 +51,15 @@ class Turtle {
     return this.position;
   }
 }
+
+const t1 = new Turtle(2, 3);
+console.log(t1);
+
+const t2 = new Turtle(0, 0).forward(3);
+console.log(t2);
+
+const t3 = new Turtle(0, 0).forward(3).right().forward(2);
+console.log(t3);
+
+const t4 = new Turtle(0, 4).forward(3).left().forward(3);
+console.log(t4);
