@@ -50,6 +50,34 @@ class Turtle {
   allPoints() {
     return this.position;
   }
+
+  print() {
+    let x = [];
+    let y = [];
+    let canvas = [];
+    this.position.forEach(value => {
+      x.push(value[0]);
+      y.push(value[1]);
+    });
+    let width = Math.max(...x) + Math.abs(Math.min(...x)) + 2;
+    let height = Math.max(...y) + Math.abs(Math.min(...y)) + 1;
+    for (let i = 0; i < height; i++) {
+      let tempArr = [];
+      for (let j = 0; j < width; j++) {
+        tempArr.push('□');
+      }
+      canvas.push(tempArr);
+    }
+
+    this.position.forEach(element => {
+      canvas[element[1]][element[0]] = '#';
+    });
+
+    for (let i = 0; i < canvas.length; i++) {
+      canvas[i] = canvas[i].join(' ');
+    }
+    console.log(canvas.join('\n'));
+  }
 }
 
 const t1 = new Turtle(2, 3);
@@ -66,3 +94,13 @@ console.log(t4);
 
 const flash = new Turtle(0, 0).forward(3).left().forward(3);
 console.log(flash.allPoints());
+
+new Turtle(0, 0)
+.forward(5)
+.right()
+.forward(5)
+.right()
+.forward(5)
+.right()
+.forward(5)
+.print()
