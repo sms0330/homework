@@ -73,6 +73,10 @@ class Turtle {
       canvas[element[1]][element[0]] = '#';
     });
 
+    canvas[this.position[0][1]][this.position[0][0]] = '.'; //start point
+    canvas[this.position[this.position.length - 1][1]][this.position[this.position.length - 1][0]] =
+      '*'; //end point
+
     for (let i = 0; i < canvas.length; i++) {
       canvas[i] = canvas[i].join(' ');
     }
@@ -95,12 +99,18 @@ console.log(t4);
 const flash = new Turtle(0, 0).forward(3).left().forward(3);
 console.log(flash.allPoints());
 
-new Turtle(0, 0)
-.forward(5)
-.right()
-.forward(5)
-.right()
-.forward(5)
-.right()
-.forward(5)
-.print()
+new Turtle(0, 4)
+  .forward(3)
+  .left()
+  .forward(3)
+  .right()
+  .forward(5)
+  .right()
+  .forward(8)
+  .right()
+  .forward(5)
+  .right()
+  .forward(3)
+  .left()
+  .forward(3)
+  .print();
