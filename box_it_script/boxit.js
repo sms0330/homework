@@ -1,5 +1,5 @@
 let arr = [];
-if (process.argv[2] === undefined) {
+if (!process.argv[2]) {
   arr = [''];
 } else {
   for (let i = 2; i < process.argv.length; i++) {
