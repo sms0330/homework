@@ -1,0 +1,22 @@
+<%- include("./partials/header")%>
+<form action="/cohorts/<%= record.id %>" method=POST>
+  <div class="card-body">
+      <label for="logoUrl">Logo Url</label>
+      <input name="logoUrl" type="text" class="form-control" id="logoUrl" value="<%= record.logoUrl%>">
+  </div>
+  <div class="card-body">
+    <label for="name">Name</label>
+    <input type="text" name='name' class="form-control" id="name" value="<%= record.name%>">
+  </div>
+  <div class="card-body">
+    <label for="members">Members</label>    
+        <textarea class="form-control" name="members" aria-label="With textarea" value="<%= record.members%>"></textarea>
+  </div>
+  <br>
+    <span style="float:right;">
+      <input type="hidden" name="_method" value='PATCH'>
+      <button type="submit" value="Update" class="btn btn-primary">Update</button>
+    <span style="float:right; padding:5px 10px;">
+</form>
+<%- include("./partials/footer")%>
+

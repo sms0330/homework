@@ -1,0 +1,62 @@
+<%- include("./partials/header")%>
+<form action="/cohorts/<%= record.id%>" method=GET>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"><%= record.name %></h2>
+            <p class="card-text">  <%= record.members %></p>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="column">
+            <legend class="col-form-label col-sm-2 pt-0">Method</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="method" id="gridRadios1" value="teamCount" <%= method ==='teamCount' ? 'checked' : '' %>>
+                    <label class="form-check-label" for="gridRadios1">Team Count</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="method" id="gridRadios2" value="numberPerTeam" <%= method ==='numberPerTeam' ? 'checked' : '' %>>
+                    <label class="form-check-label" for="gridRadios2">Number Per Team</label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" value=<%= quantity ? parseInt(quantity) : '' %>>
+        <br>
+        <button type="submit" class="btn btn-outline-primary">Assign Teams</button>
+    </div>
+</form>
+<br>
+<form action="/cohorts/<%= record.id%>" method=POST >
+    <input type="hidden" value="Delete" name='_method'>
+    <button type="submit" value="Delete" class="btn btn-outline-primary" style="width:100%">Delete</button>
+</form>
+<br>
+<form action="/cohorts/<%= record.id%>/edit">
+    <button type="submit" value="Edit" class="btn btn-outline-primary" style="width:100%">Edit</button>
+</form>
+
+<div class="column">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Members</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let n = 0; n < teams.length; n++) {%>
+          <tr>
+            <td><%= n + 1 %></td>
+            <td><%= teams[n] %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include("./partials/footer")%>
