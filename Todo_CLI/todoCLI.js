@@ -16,7 +16,7 @@ function todoMenu() {
         console.log('\nList is empty...\n');
       } else {
         for (let todo of todoList) {
-          if (todo.mark) {
+          if (todo.completed) {
             console.log(`${todoList.indexOf(todo)} [\u2713] ${todo.title}`);
           } else {
             console.log(`${todoList.indexOf(todo)} [] ${todo.title}`);
@@ -27,13 +27,13 @@ function todoMenu() {
     } 
     else if (response === 'n') {
       rl.question('\nWhat ? \n\n>', newTodo => {
-        todoList.push({ mark: false, title: newTodo });
+        todoList.push({ completed: false, title: newTodo });
         todoMenu();
       });
     } 
     else if (response[0] === 'c') {
       console.log(`\nCompleted : "${todoList[response[1]].title}"\n`);
-      todoList[response[1]].mark = true;
+      todoList[response[1]].completed = true;
       todoMenu();
     } 
     else if (response[0] === 'd') {
