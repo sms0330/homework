@@ -32,14 +32,22 @@ function todoMenu() {
       });
     } 
     else if (response[0] === 'c') {
-      console.log(`\nCompleted : "${todoList[response[1]].title}"\n`);
-      todoList[response[1]].completed = true;
-      todoMenu();
+      if (!response[1]){
+        todoMenu();
+      }else {
+        console.log(`\nCompleted : "${todoList[response[1]].title}"\n`);
+        todoList[response[1]].completed = true;
+        todoMenu();
+      }
     } 
     else if (response[0] === 'd') {
-      console.log(`\nDeleted : "${todoList[response[1]].title}"\n`);
-      todoList.pop(todoList[response[1]].title);
-      todoMenu();
+      if (!response[1]){
+        todoMenu();
+      }else {
+        console.log(`\nDeleted : "${todoList[response[1]].title}"\n`);
+        todoList.pop(todoList[response[1]].title);
+        todoMenu();
+      }
     } 
     else if (response === 'q') {
       console.log('See you soon! 😄');
