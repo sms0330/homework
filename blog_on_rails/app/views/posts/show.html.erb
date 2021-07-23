@@ -1,0 +1,32 @@
+<h1><%= @post.title%></h1>
+<p><%= @post.body %></p>
+<div>
+    <small><%= time_ago_in_words(@post.updated_at)%></small>
+    <div class="button">
+        <%= link_to "Delete", post_path(@post.id), class: "btn btn-outline-primary", method: :delete, data: {confirm: "Are you sure you want to delete the post?"}%>
+        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-primary" %>
+    </div>
+</div>
+
+
+<div class="comment-input">
+    <h3>Comments</h3>
+    <%= form_with model: [@post, @comment], local:true do |form| %>
+        <% if @comment.errors.any? %>
+            <p><% @comment.errors.full_messages.join(",")%></p>
+        <% end %>
+
+        <div>
+            <%= form.text_area(:body, style:"width:100%;", rows:3, placeholder: "What's on your mind?", class:'name_of_css_class')%>
+        </div><br>
+        <div class="button"><%= form.submit class: "btn btn-outline-primary" %></div>
+    <% end %>
+</div>
+
+<% @comments.each do |comment| %>
+    <div class="comment">
+        <p class="comment-body"><%= comment.body %><p>
+        <small>Commented <%= time_ago_in_words(comment.updated_at) %></small> •
+        <%= link_to "Delete", post_comment_path(comment.post_id, comment.id), method: :delete, data: {confirm: "Are you sure you want to delete your comment?"} %>
+    </div>
+<% end %>
