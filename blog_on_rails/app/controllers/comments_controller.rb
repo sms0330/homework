@@ -1,9 +1,12 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!, except: [:show, :index]
+
     def create
         comment_params = params.require(:comment).permit(:body)
         @comment = Comment.new comment_params
         @post = Post.find params[:post_id]
         @comment.post = @post
+        @comment.user = current_user
 
         if @comment.save
             redirect_to post_path(@post), notice: "New Comment!"
