@@ -21,7 +21,7 @@
     </nav>
 
     <% if user_signed_in? %>
-      Hello <%= current_user.name %>,
+      Hello <%= link_to current_user.name, edit_user_path(current_user.id) %>,
       <%= link_to "Logout", session_path, method: :delete, data: {confirm: "are you sure you want to log out?"}%>
     <% else %>
       <%= link_to "Login", new_session_path %> |
