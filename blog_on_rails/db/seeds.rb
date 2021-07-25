@@ -6,7 +6,8 @@ PASSWORD='0414'
 super_user=User.create(
     name: 'Joseph',
     email: 'sms0330@gmail.com',
-    password: PASSWORD
+    password: PASSWORD,
+    is_admin: true
 )
 
 10.times do

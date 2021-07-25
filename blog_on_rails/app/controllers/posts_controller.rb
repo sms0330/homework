@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post_id, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -50,4 +51,9 @@ class PostsController < ApplicationController
   def find_post_id
       @post = Post.find params[:id]
   end
+
+  def authorize_user!
+    redirect_to root_path, alert: 'Not authorized! please try again' unless can?(:crud, @post)
+  end
+
 end

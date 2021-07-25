@@ -8,17 +8,26 @@ class CommentsController < ApplicationController
         @comment.post = @post
         @comment.user = current_user
 
-        if @comment.save
-            redirect_to post_path(@post), notice: "New Comment!"
+        if can? :crud, @comment
+            if @comment.save
+                redirect_to post_path(@post), notice: "New Comment!"
+            else
+                @comments = @post.comments.order(created_at: :desc)
+                render 'posts/show', alert: "error!"
+            end
         else
-            @comments = @post.comments.order(created_at: :desc)
-            render 'posts/show', alert: "error!"
+            redirect_to root_path, alert: "Not authorized!"
         end
+
     end
 
     def destroy
         comment = Comment.find params[:id]
-        comment.destroy
-        redirect_to post_path(comment.post_id)
+        if can? :crud, comment
+            comment.destroy
+            redirect_to post_path(comment.post_id)
+        else
+            redirect_to root_path, alert: "Not authorized!"
+        end
     end
 end
