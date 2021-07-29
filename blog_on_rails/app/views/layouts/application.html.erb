@@ -28,10 +28,9 @@
       <%= link_to "Sign Up", new_user_path %>
     <% end %>
     <hr>
-    
-    
-
-    <% flash[:notice] || flash[:alert] %>
+    <div>
+      <%= render 'layouts/alerts' %>
+    </div>
     <%= yield %>
   </body>
 </html>
