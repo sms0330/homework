@@ -1,1 +1,16 @@
+div {
+  background-color: none;
+}
+.answerletter {
+  display: none;
+}
 
+.col-sm-1 {
+  text-align: center;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
