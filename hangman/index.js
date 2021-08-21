@@ -21,6 +21,7 @@ function delay(ms) {
 }
 
 async function gameOver () {
+  await delay(100);
   alert('Better luck next time...');
   audio = new Audio('assets/lose.mp3');
   audio.play();
@@ -36,6 +37,7 @@ async function checkWin () {
     }
   });
   if (winCount === letterArr.length) {
+    await delay(100);
     alert('Congratulations! You win!');
     audio = new Audio('assets/win.mp3');
     audio.play();
