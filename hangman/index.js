@@ -11,7 +11,8 @@ const makeKeyboard = () => {
   
 makeKeyboard();
 
-const letter = 'STRANGER';
+const letters = ['STRANGER', 'JAVASCRIPT', 'REACT', 'NODE', 'RUBY', 'RAILS', 'EXPRESS', 'POSTGRESQL', 'WEBPACK', 'GITHUB', 'VSCODE', 'CODECORE']
+const letter = letters[Math.ceil(Math.random() * letters.length - 1)];
 const letterArr = letter.split('');
 let wrongCount = 0;
 
@@ -27,7 +28,7 @@ async function gameOver () {
   location.reload();
 };
 
-const checkWin = () => {
+async function checkWin () {
   let winCount = 0;
   $('.answerletter').each(function (index) {
     if ($(this).css('display') === 'flex') {
@@ -38,6 +39,8 @@ const checkWin = () => {
     alert('Congratulations! You win!');
     audio = new Audio('assets/win.mp3');
     audio.play();
+    await delay(4000);
+    location.reload();
   } 
 };
 
