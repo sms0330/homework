@@ -15,10 +15,15 @@ const letter = 'STRANGER';
 const letterArr = letter.split('');
 let wrongCount = 0;
 
-const gameOver = () => {
+function delay(ms) {
+  return new Promise (resolve => setTimeout(resolve, ms));
+}
+
+async function gameOver () {
   alert('Better luck next time...');
   audio = new Audio('assets/lose.mp3');
   audio.play();
+  await delay(4000);
   location.reload();
 };
 
